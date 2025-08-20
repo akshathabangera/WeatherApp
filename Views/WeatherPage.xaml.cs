@@ -4,11 +4,12 @@ namespace WeatherApp.Views;
 
 public partial class WeatherPage : ContentPage
 {
-    private readonly WeatherService _weatherService = new WeatherService();
+    private readonly WeatherService _weatherService ;
 
-    public WeatherPage()
+    public WeatherPage(WeatherService weatherService)
     {
         InitializeComponent();
+        _weatherService = weatherService;
     }
 
     private async void OnGetWeatherClicked(object sender, EventArgs e)

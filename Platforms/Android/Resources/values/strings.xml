@@ -1,0 +1,5 @@
+﻿<resources>
+	<string name="app_name">WeatherApp</string>
+	<string name="BaseUrl">https://api.weatherapi.com/v1/current.json</string>
+	<string name="ApiKey">498108ca9f574d4f8a6132106251908</string>
+</resources>

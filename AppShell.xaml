@@ -8,10 +8,10 @@
     Title="WeatherApp">
 
     <TabBar>
-        <ShellContent
-            Title="Notes"
-            ContentTemplate="{DataTemplate views:NotesPage}"
-            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+ <ShellContent
+Title="APIKEY"
+ContentTemplate="{DataTemplate views:ApiKey}"
+Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
 
 
 
@@ -20,7 +20,12 @@
      ContentTemplate="{DataTemplate views:WeatherPage}"
      Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
 
-        
-        
+
+    <ShellContent
+    Title="Notes"
+    ContentTemplate="{DataTemplate views:NotesPage}"
+    Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+
+
     </TabBar>
 </Shell>

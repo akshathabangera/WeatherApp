@@ -2,19 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.NotesPage"
-             Title="Note">
-    <VerticalStackLayout Spacing="10" Margin="5">
-        <Editor x:Name="TextEditor"
-                Placeholder="Enter your note"
-                HeightRequest="100" />
+             Title="Notes">
+    <VerticalStackLayout Padding="10" Spacing="10">
 
-        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
-            <Button Text="Save"
-                    Clicked="SaveButton_Clicked" />
+        <!-- Form to add note -->
+        <Entry Placeholder="Title" Text="{Binding NewNote.Title}" />
+        <Entry Placeholder="Description" Text="{Binding NewNote.Description}" />
+        <Button Text="Add Note" Command="{Binding AddNoteCommand}" />
 
-            <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="DeleteButton_Clicked" />
-        </Grid>
+        <!-- Notes list -->
+        <CollectionView ItemsSource="{Binding Notes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="18"/>
+                            <Label Text="{Binding Description}" FontSize="14" TextColor="Gray"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>
