@@ -5,10 +5,19 @@ using WeatherApp.Services;
 using static System.Net.WebRequestMethods;
 
 public class WeatherService
-{    
-    private const string BaseUrl = "https://api.weatherapi.com/v1/current.json";  
+{
+    //  private const string BaseUrl = "https://api.weatherapi.com/v1/current.json";  
 
-    private readonly ApiKeyService _apiKeyService = new();   
+    private readonly HttpClient _httpClient;
+    private readonly ApiKeyService _apiKeyService;
+
+    public WeatherService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+        _apiKeyService = new();
+    }
+
+    
     public async Task<WeatherResponse> GetWeatherAsync(string city)
     {
         using (HttpClient client = new HttpClient())
@@ -19,7 +28,7 @@ public class WeatherService
                 throw new Exception("API Key not found. Please save it first.");
 
 
-            string url = $"{BaseUrl}?key={apiKey}&q={city}&lang=en";
+            string url = $"{_httpClient.BaseAddress}?key={apiKey}&q={city}&lang=en";
 
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();

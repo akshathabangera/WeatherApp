@@ -14,8 +14,7 @@ namespace WeatherApp.Services
 
         public NotesService(HttpClient httpClient)
         {
-            _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("http://192.168.1.195:8080/"); 
+            _httpClient = httpClient;            
         }
 
         public async Task<List<Note>> GetNotesAsync()

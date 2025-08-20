@@ -20,18 +20,26 @@ namespace WeatherApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            //builder.Services.AddSingleton<ApiKeyService>(DependencyService.Get<ApiKeyService>());
-            // builder.Services.AddSingleton<WeatherService>();
 
             builder.Services.AddTransient<WeatherService>();      
             builder.Services.AddTransient<WeatherPage>();
 
         
-            builder.Services.AddSingleton<NotesService>();     
+            builder.Services.AddTransient<NotesService>();     
             builder.Services.AddTransient<NotesPageViewModel>();
             builder.Services.AddTransient<NotesPage>();
 
-            builder.Services.AddHttpClient<NotesService>();
+           // builder.Services.AddHttpClient<NotesService>();
+
+            builder.Services.AddHttpClient<NotesService>(client =>
+            {
+                client.BaseAddress = new Uri("http://192.168.1.195:8080/");
+            });
+
+            builder.Services.AddHttpClient<WeatherService>(client =>
+            {
+                client.BaseAddress = new Uri("https://api.weatherapi.com/v1/current.json");
+            });
 
 
 #if DEBUG
